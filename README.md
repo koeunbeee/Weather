@@ -1,46 +1,41 @@
-# Getting Started with Create React App
+# 🌤️ Weather App
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## 📌 개요
 
-## Available Scripts
+이 프로젝트는 외부 날씨 API를 활용하여 실시간 날씨 정보를 제공하는 **서버리스 웹 애플리케이션**입니다.  
+GitHub Actions를 이용한 **CI/CD 파이프라인**을 구축하여 AWS에 자동 배포됩니다.
 
-In the project directory, you can run:
+## 🚀 기술 스택
 
-### `yarn start`
+- **Frontend**: React (TypeScript, MUI)
+- **State Management**: Zustand
+- **API 요청**: React Query
+- **배포**: AWS (S3, CloudFront 등)
+- **CI/CD**: GitHub Actions
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+## 📡 아키텍처
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+이 프로젝트는 서버리스 아키텍처를 기반으로 동작하며, 프론트엔드에서 직접 **외부 API**를 호출합니다.
 
-### `yarn test`
+- 정적 파일은 **AWS S3 + CloudFront**를 이용하여 배포
+- API 요청은 **외부 날씨 API** 활용
+<!-- - 필요시 **AWS Lambda**를 사용하여 API 프록시 처리   -->
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+## 🔧 설치 및 실행
 
-### `yarn build`
+```bash
+# 패키지 설치
+yarn install
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+# 로컬 개발 서버 실행
+yarn dev
+```
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+## 🚀 배포
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+**GitHub Actions**를 통해 자동으로 AWS에 배포됩니다.<br>
+**배포 과정** :
 
-### `yarn eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
+1. 코드 푸시 → GitHub Actions 트리거
+2. 빌드 및 테스트 실행
+3. AWS S3 & CloudFront에 배포

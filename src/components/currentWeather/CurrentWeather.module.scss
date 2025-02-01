@@ -1,0 +1,79 @@
+@use '../../styles/colors' as *;
+
+.currentContainer {
+  width: 28vw;
+  height: 95vh;
+  color: $text-color;
+  background-color: $background-color_pg;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  border: 2px solid;
+  border-radius: 30px;
+  border-color: $primary-color_p;
+}
+
+.currentBox {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+
+@keyframes moveUpDown {
+  0% {
+    transform: translateY(-3px);
+  }
+  100% {
+    transform: translateY(3px);
+  }
+}
+.moving {
+  display: block;
+  min-width: 15vw;
+  max-width: 50vw;
+  width: 30vw;
+  animation: moveUpDown 1.5s infinite alternate;
+}
+.mainTopBox {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 6%;
+}
+.tempP {
+  font-size: xx-large;
+}
+.mainP {
+  font-size: xx-large;
+}
+.horizontalLine {
+  width: 70%;
+  height: 2px;
+  background-color: $point-color_dp;
+  margin: 20px 0;
+  border-radius: 50%;
+}
+.mainUnderBox {
+  width: 70%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.humidityBox {
+  display: flex;
+  align-items: center;
+}
+.humidity {
+  width: 25px;
+  height: 25px;
+}
+.noneWind {
+  font-size: small;
+}
+.windBox {
+  display: flex;
+  gap: 5px;
+}

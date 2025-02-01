@@ -1,28 +1,3 @@
-const iconMappings: Record<string, string> = {
-  '01d': 'clean.svg',
-  '01n': 'clean.svg',
-  '02d': 'few-clouds.svg',
-  '02n': 'few-clouds.svg',
-  '03d': 'scattered-clouds.svg',
-  '03n': 'scattered-clouds.svg',
-  '04d': 'broken-clouds.svg',
-  '04n': 'broken-clouds.svg',
-  '09d': 'shower-rain.svg',
-  '09n': 'shower-rain.svg',
-  '10d': 'rain.svg',
-  '10n': 'rain.svg',
-  '11d': 'thunderstorm.svg',
-  '11n': 'thunderstorm.svg',
-  '13d': 'snow.svg',
-  '13n': 'snow.svg',
-  '50d': 'mist.svg',
-  '50n': 'mist.svg',
-};
-
-export const getWeatherIcon = (icon: string) => {
-  return iconMappings[icon] || `${icon}.svg`;
-};
-
 export const weatherConditions: Record<
   string,
   { description: string; main: string }

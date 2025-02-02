@@ -1,0 +1,14 @@
+@use '../../styles/colors' as *;
+
+.dailyContainer {
+  padding: 10px;
+}
+.dailyBox {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  gap: 2vw;
+  background-color: $point-color_pp;
+  border-radius: 15px;
+  padding: 10px;
+}

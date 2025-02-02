@@ -1,0 +1,32 @@
+@use '../../styles/colors.scss' as *;
+
+.hourlyContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+.scrollWrapper {
+  display: flex;
+  align-items: center;
+  padding: 10px;
+  width: 100%;
+  height: 100%;
+}
+.scrollBtn {
+  width: 4vw;
+  height: 90vh;
+  border: 1px solid $white_FF;
+  border-radius: 10px;
+  background-color: $background-color_sb;
+  cursor: pointer;
+}
+.scrollContainer {
+  width: 52vw;
+  height: 92vh;
+  padding: 1vw;
+  display: flex;
+  overflow: auto;
+  align-items: center;
+  gap: 1vw;
+}

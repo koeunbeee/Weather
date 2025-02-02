@@ -1,0 +1,104 @@
+@use '../../styles/colors' as *;
+
+.currentContainer {
+  width: 28vw;
+  height: 95vh;
+  color: $text-color;
+  background-color: $background-color_pg;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  border: 2px solid;
+  border-radius: 30px;
+  border-color: $primary-color_p;
+}
+
+.currentBox {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+.locationBox {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+.locationButton {
+  border: 0;
+  padding: 5px;
+  border-radius: 25px;
+  background-color: $primary-color_p;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.2s ease;
+  cursor: pointer;
+  &:hover {
+    background-color: $point-color_dp;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 8px rgba(0, 0, 0, 0.2);
+  }
+  &::after {
+    transition: opacity 0.1s ease-in-out;
+  }
+}
+
+@keyframes moveUpDown {
+  0% {
+    transform: translateY(-3px);
+  }
+  100% {
+    transform: translateY(3px);
+  }
+}
+.moving {
+  display: block;
+  min-width: 15vw;
+  max-width: 50vw;
+  width: 30vw;
+  animation: moveUpDown 1.5s infinite alternate;
+}
+.mainTopBox {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 6%;
+}
+.tempP {
+  font-size: xx-large;
+}
+.mainP {
+  font-size: xx-large;
+}
+.horizontalLine {
+  width: 70%;
+  height: 2px;
+  background-color: $point-color_dp;
+  margin: 20px 0;
+  border-radius: 50%;
+}
+.mainUnderBox {
+  width: 70%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.humidityBox {
+  display: flex;
+  align-items: center;
+}
+.humidity {
+  width: 25px;
+  height: 25px;
+}
+.noneWind {
+  font-size: small;
+}
+.windBox {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}

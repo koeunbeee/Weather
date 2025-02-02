@@ -39,11 +39,13 @@ yarn install
 # 3. 환경 변수 설정
 
 이 프로젝트는 OpenWeatherMap API, KAKAO API 키가 필요합니다.
-.env 파일을 생성하고, 아래 내용을 참고하여 환경 변수를 설정하세요.
+src폴더안에 config.json 파일을 생성하고, 아래 키를 붙여넣으세요.
 
 ```sh
-REACT_APP_WEATHER_API_KEY=b1efa94f14988a5c64b6f051cc137bcc
-REACT_APP_KAKAO_API_KEY=66a2a2d0215d8bcd997f0958077e90c0
+{
+  "REACT_APP_WEATHER_API_KEY": "b1efa94f14988a5c64b6f051cc137bcc",
+  "REACT_APP_KAKAO_API_KEY": "66a2a2d0215d8bcd997f0958077e90c0"
+}
 ```
 
 # 4. 실행

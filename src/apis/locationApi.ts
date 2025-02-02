@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-const API_KEY = process.env.REACT_APP_KAKAO_API_KEY;
+const API_KEY = window.config?.REACT_APP_KAKAO_API_KEY;
 
 // 키워드 자동완성 (주소 검색)
 export const fetchSearch = async (query: string) => {

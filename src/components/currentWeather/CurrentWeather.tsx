@@ -1,49 +1,20 @@
-import { useState, useEffect } from 'react';
-import styles from './CurrentWeather.module.scss';
 import { ReactComponent as Water } from '../../assets/icons/drop-water.svg';
-import { useWeather } from '../../hooks/useWeather';
+import { useCurrentWeather } from '../../hooks/useWeather';
 import Progress from '../../components/circularProgress/CircularProgress';
 import { weatherConditions } from '../../utils/constants';
 import { getWeatherIcon } from '../../utils/icon';
 import NavigationIcon from '@mui/icons-material/Navigation';
+import { useLocationStore } from '../../store/locationStore';
+import { useCurrentLocation } from '../../hooks/useCurrentLocation';
+import styles from './CurrentWeather.module.scss';
+import MyLocationIcon from '@mui/icons-material/MyLocation';
+import { useCurrentLocationName } from '../../hooks/useCurrentLocation';
 
-interface currentData {
-  id: number;
-  main: string;
-  description: string;
-  icon: string;
-  temp: number;
-  humidity: number;
-  windDirection: number;
-  windSpeed: number;
-}
-
-const CurrentWeather = () => {
-  const [currentData, setCurrentData] = useState<currentData | null>(null);
-  const [lon, setLon] = useState(37);
-  const [lat, setLat] = useState(127);
-
-  const { data, isLoading, error } = useWeather(lon, lat);
-  //useQuery 통해서 위도경도 전달해서 데이터 불러오기. 근데 현재 위치 기반으로 전부 하는거면 현재 위치 부터 알아야...
-
-  useEffect(() => {
-    if (data) {
-      const kelvinToCelsius = (kelvin: number) => Math.round(kelvin - 273.15);
-      const tempInCelsius = kelvinToCelsius(data.current.temp);
-
-      setCurrentData({
-        id: data.current.weather[0].id,
-        main: data.current.weather[0].main,
-        description: data.current.weather[0].description,
-        icon: data.current.weather[0].icon,
-        temp: tempInCelsius,
-        humidity: data.current.humidity,
-        windDirection: data.current.wind_deg,
-        windSpeed: data.current.wind_speed,
-      });
-      console.log(currentData?.icon);
-    }
-  }, [data]);
+const CurrentWeather = ({ loading }: { loading: boolean }) => {
+  const { lat, lon, setLocation } = useLocationStore();
+  const { fetchCurrentLocation } = useCurrentLocation();
+  const { data: currentData, isLoading, error } = useCurrentWeather(lat, lon);
+  const { data: locationName } = useCurrentLocationName(lon, lat);
 
   const weatherCondition = weatherConditions[String(currentData?.id)] || {
     description: '정보 없음',
@@ -67,15 +38,35 @@ const CurrentWeather = () => {
     return '';
   };
 
+  const handleResetLocation = async () => {
+    try {
+      const location = await fetchCurrentLocation();
+      setLocation(location.lat, location.lon);
+    } catch (error) {
+      console.error('위치를 가져오는 데 실패했습니다:', error);
+    }
+  };
+
   return (
     <div className={styles.currentContainer}>
-      <h3>현재 시간 날짜 날씨</h3>
       {isLoading ? (
         <Progress />
       ) : error ? (
         <span>현재 날씨를 가져오는데 오류가 생겼습니다.</span>
       ) : (
         <div className={styles.currentBox}>
+          <div className={styles.locationBox}>
+            <span>{locationName}</span>
+            <button
+              onClick={handleResetLocation}
+              className={styles.locationButton}
+              disabled={loading}
+              title="현재 위치 날씨보기"
+            >
+              <MyLocationIcon fontSize="large" sx={{ color: 'white' }} />
+            </button>
+          </div>
+
           <WeatherIcon className={styles.moving} />
           <div className={styles.mainTopBox}>
             <span className={styles.tempP}>{currentData?.temp}&#8451;</span>
@@ -111,4 +102,5 @@ const CurrentWeather = () => {
     </div>
   );
 };
+
 export default CurrentWeather;

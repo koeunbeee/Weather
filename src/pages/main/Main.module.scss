@@ -14,3 +14,22 @@
 .mainContent {
   display: flex;
 }
+.searchButton {
+  position: absolute;
+  right: 2vw;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 0;
+  border-radius: 25px;
+  width: 50px;
+  height: 50px;
+  transition: all 0.2s ease;
+  background-color: $background-color_pg;
+  cursor: pointer;
+  &:hover {
+    background-color: $point-color_dp;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 8px rgba(0, 0, 0, 0.2);
+  }
+}

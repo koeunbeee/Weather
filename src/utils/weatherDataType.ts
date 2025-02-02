@@ -2,6 +2,16 @@ export interface Weather {
   id: number;
   icon: string;
 }
+export interface CurrentData {
+  id: number;
+  main: string;
+  description: string;
+  icon: string;
+  temp: number;
+  humidity: number;
+  windDirection: number;
+  windSpeed: number;
+}
 
 export interface HourlyData {
   time: number; // 타임스탬프
@@ -14,11 +24,17 @@ export interface HourlyData {
   rain: number; // 강수량
 }
 
-export interface DailyData {
-  date: number;
-  weather: Weather[];
-}
 // 날짜, 오전/오후 날씨 아이콘, 최고/최저 기온
 
-// daily.temp.min
-// daily.temp.max
+export interface DailyWeather {
+  weather: { id: number; icon: string };
+}
+
+export interface DailyWeatherData {
+  date: string;
+  dayOfWeek: string;
+  morning: DailyWeather | null;
+  afternoon: DailyWeather | null;
+  minTemp: number;
+  maxTemp: number;
+}

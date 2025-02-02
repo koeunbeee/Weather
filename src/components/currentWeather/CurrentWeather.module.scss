@@ -20,6 +20,30 @@
   justify-content: center;
   flex-direction: column;
 }
+.locationBox {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+.locationButton {
+  border: 0;
+  padding: 5px;
+  border-radius: 25px;
+  background-color: $primary-color_p;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.2s ease;
+  cursor: pointer;
+  &:hover {
+    background-color: $point-color_dp;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 8px rgba(0, 0, 0, 0.2);
+  }
+  &::after {
+    transition: opacity 0.1s ease-in-out;
+  }
+}
 
 @keyframes moveUpDown {
   0% {
@@ -75,5 +99,6 @@
 }
 .windBox {
   display: flex;
+  align-items: center;
   gap: 5px;
 }

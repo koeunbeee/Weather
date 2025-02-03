@@ -1,7 +1,7 @@
-interface Config {
-  REACT_APP_WEATHER_API_KEY: string;
-  REACT_APP_KAKAO_API_KEY: string;
-}
+// interface Config {
+//   REACT_APP_WEATHER_API_KEY: string;
+//   REACT_APP_KAKAO_API_KEY: string;
+// }
 
 export const loadConfig = async (): Promise<void> => {
   try {

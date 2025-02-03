@@ -1,6 +1,5 @@
 // Main.tsx
 import { useState, useEffect } from 'react';
-import { useLocationStore } from '../../store/locationStore';
 import { useCurrentLocation } from '../../hooks/useCurrentLocation';
 import styles from './Main.module.scss';
 import CurrentWeather from '../../components/currentWeather/CurrentWeather';

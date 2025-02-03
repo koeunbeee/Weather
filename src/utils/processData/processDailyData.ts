@@ -1,8 +1,7 @@
-import { DailyWeather, DailyWeatherData } from '../weatherDataType';
+import { DailyWeatherData } from '../weatherDataType';
 
 export const processDailyWeather = (data: any): DailyWeatherData[] => {
   const today = new Date().toISOString().split('T')[0]; // "YYYY-MM-DD" 형식의 오늘 날짜
-  console.log('data', data);
 
   // 섭씨로 변환하는 함수
   const kelvinToCelsius = (kelvin: number) => Math.round(kelvin - 273.15);

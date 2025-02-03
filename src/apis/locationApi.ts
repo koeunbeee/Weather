@@ -21,7 +21,7 @@ export const fetchSearch = async (query: string) => {
   return response.data.documents;
 };
 
-// 주소로 검색 (위도, 경도 반환)
+// 주소로 검색 (위도, 경도 반환)임
 export const fetchSearchLocations = async (address: string) => {
   const url = 'https://dapi.kakao.com/v2/local/search/address.json';
   const response = await axios.get(url, {
